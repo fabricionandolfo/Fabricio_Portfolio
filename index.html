@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fabricio Nandolfo | Software Developer</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons (opcional, pra ícones bonitos) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root{
+      --bg: #0b1324;
+      --bg2:#0a0f1e;
+      --card:#0f1b33;
+      --text:#e9efff;
+      --muted:#a7b4d6;
+      --accent:#ff6b4a;
+      --accent2:#ff835f;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 520px at 78% 22%, rgba(255,107,74,.18) 0%, rgba(11,19,36,0) 55%),
+                  radial-gradient(1000px 700px at 12% 12%, rgba(140,90,255,.14) 0%, rgba(11,19,36,0) 58%),
+                  linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar{
+      padding: 18px 0;
+      background: transparent;
+    }
+    .brand-dot{
+      display:inline-block;
+      width:8px;height:8px;border-radius:999px;
+      background: var(--accent);
+      margin-left: 6px;
+      transform: translateY(-2px);
+    }
+    .nav-link{
+      color: rgba(233,239,255,.82) !important;
+      font-weight: 500;
+      margin-left: 12px;
+      position: relative;
+    }
+    .nav-link:hover{ color: var(--accent) !important; }
+    .nav-link.active::after{
+      content:"";
+      position:absolute;
+      left: 10px;
+      right: 10px;
+      bottom: -6px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    /* ===== HERO ===== */
+    .hero{
+      padding: 56px 0 34px;
+      position: relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:-200px; top:-220px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(255,107,74,.12), rgba(255,107,74,0) 65%);
+      filter: blur(1px);
+      pointer-events:none;
+    }
+    .hero-title{
+      font-size: clamp(30px, 4.2vw, 52px);
+      line-height: 1.06;
+      letter-spacing: -0.5px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero-sub{
+      color: rgba(233,239,255,.88);
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+    .hello{
+      font-size: 44px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .hello .dot{
+      color: var(--accent);
+      margin-left: 2px;
+    }
+    .accent-line{
+      height: 2px;
+      width: 62px;
+      background: var(--accent);
+      border-radius: 999px;
+      margin: 14px 0 18px;
+      opacity: .95;
+    }
+
+    .btn-accent{
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: #111;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(255,107,74,.18);
+    }
+    .btn-accent:hover{ background: var(--accent2); border-color: var(--accent2); }
+    .btn-outline-accent{
+      border: 1px solid rgba(255,107,74,.85);
+      color: rgba(233,239,255,.92);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      background: rgba(255,107,74,.06);
+    }
+    .btn-outline-accent:hover{
+      background: rgba(255,107,74,.14);
+      color: #fff;
+    }
+
+    /* Avatar area */
+    .avatar-wrap{
+      position: relative;
+      width: min(420px, 100%);
+      margin-left: auto;
+    }
+    .ring{
+      position: absolute;
+      right: 8%;
+      top: 14%;
+      width: 300px;
+      height: 300px;
+      border-radius: 999px;
+      border: 18px solid rgba(255,107,74,.75);
+      box-shadow: 0 0 0 10px rgba(255,107,74,.10);
+      filter: drop-shadow(0 22px 40px rgba(0,0,0,.35));
+    }
+    .avatar-card{
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .avatar-card::before{
+      content:"";
+      position:absolute;
+      inset: -1px;
+      background: radial-gradient(500px 220px at 80% 20%, rgba(255,107,74,.18) 0%, rgba(0,0,0,0) 60%);
+      pointer-events:none;
+    }
+    .avatar-img{
+      position: relative;
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      filter: contrast(1.02) saturate(1.05);
+    }
+    .chev{
+      position:absolute;
+      top: 46%;
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,15,30,.55);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(233,239,255,.75);
+      backdrop-filter: blur(6px);
+    }
+    .chev.left{ left: -18px; }
+    .chev.right{ right: -18px; }
+    .chev i{ font-size: 22px; }
+
+    /* ===== SKILLS STRIP ===== */
+    .skills-strip{
+  margin-top: 18px;
+  padding: 14px 16px;              /* + respiro nas laterais */
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(255,255,255,.02);
+
+  border-radius: 18px;             /* arredondado */
+  border: 1px solid rgba(255,255,255,.06);  /* opcional: borda única mais clean */
+}
+    .skill-item{
+      color: rgba(233,239,255,.55);
+      letter-spacing: .6px;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+    }
+
+    /* ===== SECTIONS ===== */
+    section{ padding: 70px 0; }
+    .section-title{
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: -0.6px;
+      margin-bottom: 10px;
+    }
+    .section-text{ color: rgba(233,239,255,.70); }
+
+    /* ===== SERVICES + ABOUT ===== */
+    .service-list{
+      position: relative;
+      padding-left: 18px;
+    }
+    .service-list::before{
+      content:"";
+      position:absolute;
+      left: 4px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: rgba(255,107,74,.35);
+      border-radius: 999px;
+    }
+    .service-item{
+      display:flex;
+      align-items:flex-start;
+      gap: 14px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 14px;
+    }
+    .service-dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 6px;
+      box-shadow: 0 0 0 8px rgba(255,107,74,.12);
+    }
+    .service-icon{
+      width: 44px;height:44px;
+      border-radius: 14px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(255,107,74,.10);
+      border: 1px solid rgba(255,107,74,.25);
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+    .service-icon i{ font-size: 20px; }
+
+    .stat{
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 16px;
+      height: 100%;
+    }
+    .stat .num{
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .stat .num span{ color: var(--accent); }
+    .stat .label{
+      color: rgba(233,239,255,.65);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* ===== PROJECTS ===== */
+    .project-card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 14px 42px rgba(0,0,0,.30);
+      height: 100%;
+    }
+    .project-thumb{
+      height: 160px;
+      background: radial-gradient(420px 200px at 30% 30%, rgba(255,107,74,.20), rgba(0,0,0,0) 60%),
+                  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .badge-tech{
+      background: rgba(255,107,74,.12);
+      border: 1px solid rgba(255,107,74,.25);
+      color: rgba(233,239,255,.85);
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display:inline-block;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 24px;
+      padding: 22px;
+    }
+    .form-control, .form-control:focus{
+      background: rgba(10,15,30,.55);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      box-shadow: none;
+      border-radius: 14px;
+    }
+    .form-control::placeholder{ color: rgba(233,239,255,.40); }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 34px;
+      color: rgba(233,239,255,.55);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* Small tweaks */
+    @media (max-width: 991px){
+      .ring{ display:none; }
+      .avatar-img{ height: 360px; }
+      .chev{ display:none; }
+      .section-title{ font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-white" href="#home">
+        Fabricio<span class="brand-dot"></span>
+      </a>
+
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="accent-line"></div>
+          <div class="hello">Ola<span class="dot">.</span></div>
+          <div class="hero-sub">Eu Sou <strong>Fabricio</strong></div>
+          <h1 class="hero-title">Software Developer</h1>
+
+          <p class="text-white-50 mb-4" style="max-width: 540px;">
+            Sou desenvolvedor pleno com base sólida em <strong>C#/.NET</strong>, <strong>ASP.NET MVC</strong> e <strong>SQL Server</strong>.
+            Tenho experiência construindo sistemas com arquitetura bem organizada, foco em performance e manutenibilidade —
+            desde regras de negócio e integrações até interfaces limpas e responsivas.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-accent" href="#contact">Vamos conversar</a>
+            <a class="btn btn-outline-accent" href="#" target="_blank" rel="noreferrer">Meu currículo</a>
+            <a class="btn btn-outline-accent" href="#" target="_blank" rel="noreferrer">
+              <i class="bi bi-github me-2"></i>GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="avatar-wrap">
+            <div class="ring"></div>
+
+            <div class="avatar-card">
+              <img class="avatar-img" src="img/eu.jpeg" alt="Foto de perfil">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Strip -->
+      <div class="skills-strip">
+        <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-between">
+          <span class="skill-item">C#</span>
+          <span class="skill-item">.NET Framework</span>
+          <span class="skill-item">ASP.NET MVC</span>
+          <span class="skill-item">SQL Server</span>
+          <span class="skill-item">Entity Framework</span>
+          <span class="skill-item">REST APIs</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">Bootstrap</span>
+          <span class="skill-item">Git</span>
+          <span class="skill-item">Azure DevOps</span>
+          <span class="skill-item">Azure</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT + SERVICES -->
+  <section id="about">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+          <div class="service-list">
+            <div class="service-item">
+              <div class="service-dot"></div>
+              <div class="service-icon"><i class="bi bi-window"></i></div>
+              <div>
+                <div class="fw-semibold">Web Development</div>
+                <div class="text-white-50 small">Aplicações MVC com UI moderna, responsiva e bem estruturada.</div>
+              </div>
+            </div>
+
+            <div class="service-item">
+              <div class="service-dot"></div>
+              <div class="service-icon"><i class="bi bi-braces"></i></div>
+              <div>
+                <div class="fw-semibold">Back-end & APIs</div>
+                <div class="text-white-50 small">APIs REST, integrações, autenticação e regras de negócio.</div>
+              </div>
+            </div>
+
+            <div class="service-item">
+              <div class="service-dot"></div>
+              <div class="service-icon"><i class="bi bi-cloud"></i></div>
+              <div>
+                <div class="fw-semibold">Cloud & DevOps</div>
+                <div class="text-white-50 small">Deploy, versionamento, pipelines e gestão de demandas no Azure DevOps.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <h2 class="section-title mb-3">Sobre mim</h2>
+          <p class="section-text mb-4" style="max-width: 720px;">
+            Sou desenvolvedor pleno com foco em construir sistemas robustos e fáceis de evoluir.
+            Tenho experiência com <strong>arquitetura em camadas</strong> (Web/Application/Domain/Infrastructure),
+            <strong>boas práticas</strong> (clean code, padrões, separação de responsabilidades) e atenção a detalhes
+            como <strong>performance</strong>, logs/auditoria e qualidade de entrega.
+            Gosto de trabalhar com produto e transformar necessidade em solução bem feita.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
+        <div>
+          <h2 class="section-title mb-1">Projects</h2>
+          <div class="section-text">Alguns exemplos de projetos alinhados com o que eu desenvolvo no dia a dia.</div>
+        </div>
+        <a class="btn btn-outline-accent" href="#" target="_blank" rel="noreferrer">
+          <i class="bi bi-github me-2"></i>Ver todos no GitHub
+        </a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-thumb"></div>
+            <div class="p-4">
+              <h5 class="fw-semibold mb-2">Intranet (Multi-tenant)</h5>
+              <p class="text-white-50 small mb-3">
+                Base com autenticação, perfis/roles, módulos por empresa, permissões e organização por camadas.
+                Pensado para escalar com segurança e manutenção simples.
+              </p>
+              <div class="mb-3">
+                <span class="badge-tech">.NET</span>
+                <span class="badge-tech">MVC</span>
+                <span class="badge-tech">SQL</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-accent btn-sm" href="#" target="_blank" rel="noreferrer">Demo</a>
+                <a class="btn btn-outline-accent btn-sm" href="#" target="_blank" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-thumb"></div>
+            <div class="p-4">
+              <h5 class="fw-semibold mb-2">GED / Documentos</h5>
+              <p class="text-white-50 small mb-3">
+                Gestão e listagem de arquivos com filtros, paginação e regras por pasta/perfil.
+                Foco em usabilidade, performance e rastreabilidade (logs/auditoria).
+              </p>
+              <div class="mb-3">
+                <span class="badge-tech">C#</span>
+                <span class="badge-tech">API</span>
+                <span class="badge-tech">DataTables</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-accent btn-sm" href="#" target="_blank" rel="noreferrer">Demo</a>
+                <a class="btn btn-outline-accent btn-sm" href="#" target="_blank" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-thumb"></div>
+            <div class="p-4">
+              <h5 class="fw-semibold mb-2">Portfolio</h5>
+              <p class="text-white-50 small mb-3">
+                Site pessoal para apresentar stack, projetos e contatos.
+                Layout limpo, responsivo e com foco em experiência do usuário.
+              </p>
+              <div class="mb-3">
+                <span class="badge-tech">HTML</span>
+                <span class="badge-tech">Bootstrap</span>
+                <span class="badge-tech">JS</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-accent btn-sm" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="btn btn-outline-accent btn-sm" href="#" target="_blank" rel="noreferrer">Repo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="margin-bottom: 10px;">
+    <div class="container">
+      <div class="row align-items-stretch">
+        <div class="col-lg-5">
+          <h2 class="section-title mb-2">Contacts</h2>
+          <p class="section-text mb-4">
+            Se quiser falar sobre projeto, oportunidade ou parceria, me chama por aqui.
+          </p>
+
+          <div class="contact-card h-70">
+            <div class="d-flex flex-column gap-12">
+              <div>
+                <div class="text-white-50 small">Email</div>
+                <div class="fw-semibold"><i class="bi bi-envelope me-2 text-warning"></i>seuemail@dominio.com</div>
+              </div>
+              <div>
+                <div class="text-white-50 small">LinkedIn</div>
+                <div class="fw-semibold"><i class="bi bi-linkedin me-2 text-warning"></i>linkedin.com/in/seu-perfil</div>
+              </div>
+              <div>
+                <div class="text-white-50 small">GitHub</div>
+                <div class="fw-semibold"><i class="bi bi-github me-2 text-warning"></i>github.com/seuusuario</div>
+              </div>
+
+              <hr class="border-opacity-10 my-2">
+
+              <div class="d-flex gap-2 flex-wrap">
+                <a class="btn btn-accent" href="#"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+                <a class="btn btn-outline-accent" href="#"><i class="bi bi-download me-2"></i>Resume</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="row">
+    <div class="container d-flex justify-content-between flex-wrap gap-2">
+      <div>© <span id="year"></span> Fabricio Nandolfo</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // fecha menu no mobile
+        const nav = document.querySelector(".navbar-collapse");
+        if(nav && nav.classList.contains("show")){
+          new bootstrap.Collapse(nav).toggle();
+        }
+      });
+    });
+
+    // ativa link do menu conforme scroll (bem simples)
+    const sections = ["#home","#about","#projects","#contact"].map(s => document.querySelector(s));
+    const links = Array.from(document.querySelectorAll(".nav-link"));
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY + 140;
+      let idx = 0;
+      sections.forEach((sec, i) => {
+        if(sec && sec.offsetTop <= y) idx = i;
+      });
+      links.forEach(l => l.classList.remove("active"));
+      if(links[idx]) links[idx].classList.add("active");
+    });
+  </script>
+</body>
+</html>
