@@ -350,6 +350,58 @@
         align-items: stretch;
       }
     }
+
+    .avatar-img {
+  position: relative;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 18%,
+      black 78%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+
+  -webkit-mask-composite: intersect;
+  mask-composite: intersect;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 12%,
+      black 78%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+}
+
+.avatar-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    60% 50% at 50% 35%,
+    rgba(255,107,74,.18),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
   </style>
 </head>
 
@@ -383,7 +435,7 @@
         <div class="col-lg-6">
           <div class="accent-line"></div>
           <div class="hello">Ola<span class="dot">.</span></div>
-          <div class="hero-sub">Eu Sou <strong>Fabricio</strong></div>
+          <div class="hero-sub">Sou <strong>Fabricio</strong></div>
           <h1 class="hero-title">Software Developer</h1>
 
           <p class="text-white-50 mb-4" style="max-width: 540px;">
@@ -393,9 +445,9 @@
           </p>
 
           <div class="d-flex gap-2 flex-wrap hero-actions">
-            <a class="btn btn-accent" href="#contact">Vamos conversar</a>
-            <a class="btn btn-outline-accent" href="#" target="_blank" rel="noreferrer">Meu currículo</a>
-            <a class="btn btn-outline-accent" href="#" target="_blank" rel="noreferrer">
+            <a class="btn btn-accent" target="_blank" href="https://wa.me/5527998968317">Vamos conversar</a>
+            <a class="btn btn-outline-accent" href="arquivos/Fabricio_CSV.pdf" target="_blank" rel="noreferrer">Meu currículo</a>
+            <a class="btn btn-outline-accent" href="https://github.com/fabricionandolfo" target="_blank" rel="noreferrer">
               <i class="bi bi-github me-2"></i>GitHub
             </a>
           </div>
@@ -403,9 +455,9 @@
 
         <div class="col-lg-6">
           <div class="avatar-wrap">
-            <div class="ring"></div>
+            
 
-            <div class="avatar-card">
+            <div class="">
               <img class="avatar-img" src="img/eu.jpeg" alt="Foto de perfil">
             </div>
           </div>
@@ -488,9 +540,10 @@
           <h2 class="section-title mb-1">Projects</h2>
           <div class="section-text">Alguns exemplos de projetos alinhados com o que eu desenvolvo no dia a dia.</div>
         </div>
-        <a class="btn btn-outline-accent" href="#" target="_blank" rel="noreferrer">
+        <a class="btn btn-outline-accent"href="https://github.com/fabricionandolfo" target="_blank" rel="noreferrer">
           <i class="bi bi-github me-2"></i>Ver todos no GitHub
         </a>
+        
       </div>
 
       <div class="row g-4">
@@ -581,19 +634,25 @@
                 <div class="fw-semibold"><i class="bi bi-envelope me-2 text-warning"></i>nandolfofabricio@gmail.com</div>
               </div>
               <div>
+                <div class="text-white-50 small">Celular</div>
+                <div class="fw-semibold"><i class="bi bi-telephone me-2 text-warning"></i>(27) 9 9896-8317</a></div>
+              </div>
+              <div>
                 <div class="text-white-50 small">LinkedIn</div>
-                <div  class="fw-semibold"><i class="bi bi-linkedin me-2 text-warning"></i><a href="https://www.linkedin.com/in/fabricio-nandolfo/">linkedin.com/fabricio_nandolfo</a></div>
+                <div  class="fw-semibold"><i class="bi bi-linkedin me-2 text-warning"></i><a href="https://www.linkedin.com/in/fabricio-nandolfo/" target="_blank">linkedin.com/fabricio_nandolfo</a></div>
               </div>
               <div>
                 <div class="text-white-50 small">GitHub</div>
-                <div class="fw-semibold"><i class="bi bi-github me-2 text-warning"></i><a href="https://github.com/fabricionandolfo">github.com/fabricionandolfo<a></a></div>
+                <div class="fw-semibold"><i class="bi bi-github me-2 text-warning"></i><a href="https://github.com/fabricionandolfo" target="_blank">github.com/fabricionandolfo<a></a></div>
               </div>
+
+              
 
               <hr class="border-opacity-10 my-2">
 
               <div class="d-flex gap-2 flex-wrap">
-                <a class="btn btn-accent" href="#"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a> 
-                <a class="btn btn-outline-accent" href="arquivos/Fabricio_CSV.pdf" download><i class="bi bi-download me-2"></i>Currículo</a>
+              <a class="btn btn-accent" href="https://wa.me/5527998968317" target="_blank"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+              <a class="btn btn-outline-accent" href="arquivos/Fabricio_CSV.pdf" target="_blank" download><i class="bi bi-download me-2"></i>Currículo</a>
                 
               </div>
             </div>
