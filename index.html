@@ -30,7 +30,7 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 120%; }
+    html, body { height: 153%; }
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: radial-gradient(900px 520px at 78% 22%, rgba(255,107,74,.18) 0%, rgba(11,19,36,0) 55%),
@@ -238,6 +238,62 @@
       flex: 0 0 auto;
     }
     .service-icon i{ font-size: 20px; }
+
+    /* ===== FORMAÇÃO & CURSOS ===== */
+    .edu-card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
+      padding: 18px;
+      height: 100%;
+      box-shadow: 0 14px 42px rgba(0,0,0,.22);
+    }
+    .edu-title{
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: rgba(233,239,255,.92);
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      letter-spacing: -0.2px;
+    }
+    .edu-title i{ color: var(--accent); }
+    .edu-item{
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .edu-item:first-of-type{
+      border-top: 0;
+      padding-top: 0;
+    }
+    .edu-meta{
+      color: rgba(233,239,255,.60);
+      font-size: 13px;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+    .edu-link{
+      color: rgba(233,239,255,.85);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,107,74,.45);
+    }
+    .edu-link:hover{
+      color: #fff;
+      border-bottom-color: rgba(255,107,74,.85);
+    }
+
+    /* ✅ NOVO: deixa Formação/Cursos como faixa abaixo (organiza visualmente) */
+    .about-edu{
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    @media (max-width: 991px){
+      .about-edu{
+        margin-top: 16px;
+        padding-top: 14px;
+      }
+    }
 
     /* ===== PROJECTS (REVAMP) ===== */
     #projects .section-text{ max-width: 760px; }
@@ -630,6 +686,8 @@
 
       .skills-wrapper{ grid-template-columns: 1fr; }
       .skills-card{ min-height: 300px; }
+
+      .edu-card{ padding: 14px; border-radius: 18px; }
     }
 
     /* máscara só na foto do HERO */
@@ -652,7 +710,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand fw-bold text-white" href="#home">
-        Fabricio<span class="brand-dot"></span>
+        Fabricio Nandolfo Ramos<span class="brand-dot"></span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Abrir menu">
@@ -727,6 +785,8 @@
   <!-- ABOUT + SERVICES -->
   <section id="about">
     <div class="container">
+
+      <!-- TOPO: Serviços (esq) + Sobre (dir) -->
       <div class="row g-4 align-items-start">
         <div class="col-lg-5">
           <div class="service-list">
@@ -761,7 +821,7 @@
 
         <div class="col-lg-7">
           <h2 class="section-title mb-3">Sobre mim</h2>
-          <p class="section-text mb-4" style="max-width: 720px;">
+          <p class="section-text mb-0" style="max-width: 720px;">
             Sou desenvolvedor pleno com foco em construir sistemas robustos e fáceis de evoluir.
             Tenho experiência com <strong>arquitetura em camadas</strong> (Web/Application/Domain/Infrastructure),
             <strong>boas práticas</strong> (clean code, padrões, separação de responsabilidades) e atenção a detalhes
@@ -770,6 +830,58 @@
           </p>
         </div>
       </div>
+
+      <!-- ✅ FAIXA: Formação & Cursos (abaixo, largura total e alinhado) -->
+      <div class="about-edu">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="edu-card">
+              <div class="edu-title">
+                <i class="bi bi-mortarboard-fill"></i> Formação
+              </div>
+
+              <div class="edu-item">
+                <div class="fw-semibold">Ciência da Computação</div>
+                <div class="edu-meta">Graduado</div>
+              </div>
+
+              <div class="edu-item">
+                <div class="fw-semibold">Foco</div>
+                <div class="edu-meta">Back-end .NET, arquitetura em camadas e APIs</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="edu-card">
+              <div class="edu-title">
+                <i class="bi bi-award-fill"></i> Cursos & Certificações
+              </div>
+
+              <div class="edu-item">
+                <div class="fw-semibold">AZ-900 (em andamento)</div>
+                <div class="edu-meta">Microsoft Azure Fundamentals</div>
+              </div>
+
+              <div class="edu-item">
+                <div class="fw-semibold">APIs REST + Swagger</div>
+                <div class="edu-meta">
+                  CRUD, autenticação e documentação OpenAPI.
+                  <!-- se tiver link do certificado, coloca aqui -->
+                  <!-- Ex: <a class="edu-link" href="LINK" target="_blank" rel="noreferrer">Ver certificado</a> -->
+                </div>
+              </div>
+
+              <div class="edu-item">
+                <div class="fw-semibold">SQL Server (consultas + performance)</div>
+                <div class="edu-meta">Procedures, índices e otimização</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /FAIXA -->
+
     </div>
   </section>
 
@@ -826,55 +938,6 @@
                 <span class="badge-tech">C#</span>
                 <span class="badge-tech">ASP.NET MVC</span>
                 <span class="badge-tech">SQL Server</span>
-              </div>
-
-              <div class="project-actions">
-                <a class="btn btn-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
-                  <i class="bi bi-play-circle"></i>Demo
-                </a>
-                <a class="btn btn-outline-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
-                  <i class="bi bi-code-slash"></i>Repo
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Projeto 2: GED -->
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card">
-            <div class="project-thumb">
-              <div class="thumb-center">
-                <div class="thumb-icon"><i class="bi bi-folder2-open"></i></div>
-              </div>
-            </div>
-
-            <div class="project-body">
-              <div class="project-top">
-                <h5 class="project-title">GED / Documentos</h5>
-                <span class="project-status status-soon">
-                  <span class="dot"></span> Em breve
-                </span>
-              </div>
-
-              <div class="project-sub">Listagem + filtros + paginação + regras por pasta</div>
-
-              <p class="project-desc">
-                Gestão e listagem de documentos com filtros, paginação e regras por perfil/pasta.
-                Foco em performance, rastreabilidade e experiência do usuário.
-              </p>
-
-              <div class="project-highlights">
-                <span class="project-chip">DataTables</span>
-                <span class="project-chip">Filtros avançados</span>
-                <span class="project-chip">Regras por pasta</span>
-                <span class="project-chip">Performance</span>
-              </div>
-
-              <div class="mb-3">
-                <span class="badge-tech">C#</span>
-                <span class="badge-tech">REST API</span>
-                <span class="badge-tech">SQL</span>
               </div>
 
               <div class="project-actions">
