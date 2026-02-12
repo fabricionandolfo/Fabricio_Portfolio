@@ -30,7 +30,7 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body { height: 120%; }
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: radial-gradient(900px 520px at 78% 22%, rgba(255,107,74,.18) 0%, rgba(11,19,36,0) 55%),
@@ -156,33 +156,6 @@
       width: min(420px, 100%);
       margin-left: auto;
     }
-    .ring{
-      position: absolute;
-      right: 8%;
-      top: 14%;
-      width: 300px;
-      height: 300px;
-      border-radius: 999px;
-      border: 18px solid rgba(255,107,74,.75);
-      box-shadow: 0 0 0 10px rgba(255,107,74,.10);
-      filter: drop-shadow(0 22px 40px rgba(0,0,0,.35));
-    }
-    .avatar-card{
-      position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .avatar-card::before{
-      content:"";
-      position:absolute;
-      inset: -1px;
-      background: radial-gradient(500px 220px at 80% 20%, rgba(255,107,74,.18) 0%, rgba(0,0,0,0) 60%);
-      pointer-events:none;
-    }
     .avatar-img{
       position: relative;
       width: 100%;
@@ -266,7 +239,9 @@
     }
     .service-icon i{ font-size: 20px; }
 
-    /* ===== PROJECTS ===== */
+    /* ===== PROJECTS (REVAMP) ===== */
+    #projects .section-text{ max-width: 760px; }
+
     .project-card{
       background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.10);
@@ -274,13 +249,139 @@
       overflow: hidden;
       box-shadow: 0 14px 42px rgba(0,0,0,.30);
       height: 100%;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
+    .project-card:hover{
+      transform: translateY(-8px);
+      border-color: rgba(255,107,74,.35);
+      background: rgba(255,255,255,.04);
+    }
+
     .project-thumb{
-      height: 160px;
-      background: radial-gradient(420px 200px at 30% 30%, rgba(255,107,74,.20), rgba(0,0,0,0) 60%),
-                  linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      height: 170px;
+      position: relative;
+      overflow: hidden;
       border-bottom: 1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(520px 220px at 30% 30%, rgba(255,107,74,.22), rgba(0,0,0,0) 60%),
+        radial-gradient(420px 220px at 70% 60%, rgba(140,90,255,.16), rgba(0,0,0,0) 60%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
     }
+    .project-thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: .06;
+      pointer-events:none;
+    }
+    .project-thumb .thumb-center{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .project-thumb .thumb-icon{
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(255,107,74,.10);
+      border: 1px solid rgba(255,107,74,.25);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+    }
+    .project-thumb .thumb-icon i{
+      font-size: 30px;
+      color: var(--accent);
+    }
+
+    .project-body{ padding: 18px 18px 16px; }
+
+    .project-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .project-title{
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+    .project-sub{
+      color: rgba(233,239,255,.65);
+      font-size: 12px;
+      margin: 6px 0 12px;
+    }
+
+    .project-status{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: rgba(233,239,255,.82);
+      white-space: nowrap;
+    }
+    .project-status .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.35);
+    }
+    .status-live{
+      border-color: rgba(40, 199, 111, .35);
+      background: rgba(40, 199, 111, .08);
+    }
+    .status-live .dot{ background: rgba(40, 199, 111, .95); }
+
+    .status-progress{
+      border-color: rgba(255,107,74,.35);
+      background: rgba(255,107,74,.10);
+    }
+    .status-progress .dot{ background: rgba(255,107,74,.95); }
+
+    .status-soon{
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.02);
+      color: rgba(233,239,255,.70);
+    }
+    .status-soon .dot{ background: rgba(255,255,255,.35); }
+
+    .project-desc{
+      color: rgba(233,239,255,.70);
+      font-size: 13px;
+      margin-bottom: 14px;
+      min-height: 58px;
+    }
+
+    .project-highlights{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .project-chip{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      color: rgba(233,239,255,.70);
+    }
+
     .badge-tech{
       background: rgba(255,107,74,.12);
       border: 1px solid rgba(255,107,74,.25);
@@ -294,6 +395,193 @@
       display:inline-block;
     }
 
+    .project-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .project-actions .btn{
+      border-radius: 12px;
+      font-weight: 700;
+    }
+    .project-actions .btn-sm{ padding: .50rem .85rem; }
+    .project-actions .btn i{ margin-right: 6px; }
+
+    /* thumb com imagem (Portfolio) */
+    .project-thumb--img{
+      padding:0;
+      background: none;
+    }
+    .project-thumb--img::after{ display:none; }
+
+    /* imagem do projeto (não usar .avatar-img aqui porque tem máscara) */
+    .project-img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+      border: 0;
+      border-radius: 0;
+      filter: contrast(1.02) saturate(1.02);
+    }
+
+    /* ===== SKILLS (NÍVEL + ÍCONE + DOTS) ===== */
+    #skills{ padding: 70px 0; }
+
+    .skills-wrapper{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .skills-card{
+      position: relative;
+      min-height: 320px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
+      box-shadow: 0 14px 42px rgba(0,0,0,.30);
+      overflow: hidden;
+      padding: 18px;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skills-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(520px 240px at 80% 20%, rgba(255,107,74,.16) 0%, rgba(0,0,0,0) 60%);
+      pointer-events:none;
+      opacity: .7;
+    }
+
+    .skills-card:hover{
+      transform: translateY(-8px);
+      border-color: rgba(255,107,74,.35);
+      background: rgba(255,255,255,.04);
+    }
+
+    .skills-head{
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .skills-icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,107,74,.10);
+      border: 1px solid rgba(255,107,74,.25);
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+    .skills-icon i{ font-size: 20px; }
+
+    .skills-title{
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: rgba(233,239,255,.92);
+    }
+
+    .skills-desc{
+      position: relative;
+      color: rgba(233,239,255,.70);
+      font-size: 13px;
+      margin: 0 0 12px;
+      min-height: 44px;
+    }
+
+    .skills-tags{
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .skill-pill{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      color: rgba(233,239,255,.70);
+    }
+
+    .skills-footer{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .level-badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(233,239,255,.85);
+      white-space: nowrap;
+    }
+    .level-badge i{ font-size: 14px; color: var(--accent); }
+
+    .level-advanced{
+      border-color: rgba(255,107,74,.40);
+      background: rgba(255,107,74,.10);
+    }
+    .level-intermediate{
+      border-color: rgba(255,107,74,.22);
+      background: rgba(255,107,74,.06);
+    }
+    .level-basic{
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: rgba(233,239,255,.72);
+    }
+
+    .level-dots{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .level-dots .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .level-dots .dot.active{
+      background: rgba(255,107,74,.95);
+      border-color: rgba(255,107,74,.55);
+      box-shadow: 0 0 0 6px rgba(255,107,74,.12);
+    }
+
     /* ===== CONTACT ===== */
     .contact-card{
       background: rgba(255,255,255,.03);
@@ -301,18 +589,9 @@
       border-radius: 24px;
       padding: 22px;
     }
-    .form-control, .form-control:focus{
-      background: rgba(10,15,30,.55);
-      border: 1px solid rgba(255,255,255,.12);
-      color: var(--text);
-      box-shadow: none;
-      border-radius: 14px;
-    }
-    .form-control::placeholder{ color: rgba(233,239,255,.40); }
 
     /* essas classes não existem no Bootstrap, então eu garanto aqui */
     .gap-12{ gap: 12px; }
-    .h-70{ height: 100%; }
 
     /* Footer */
     footer{
@@ -323,11 +602,12 @@
 
     /* ===== MOBILE TWEAKS ===== */
     @media (max-width: 991px){
-      .ring{ display:none; }
       .avatar-img{ height: 360px; }
       .section-title{ font-size: 34px; }
       section{ padding: 56px 0; }
       .hero{ padding: 32px 0 22px; }
+
+      .skills-wrapper{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 576px){
@@ -335,12 +615,10 @@
       .hero-sub{ font-size: 16px; margin-bottom: 12px; }
       .hero-title{ font-size: 34px; }
       .accent-line{ margin: 10px 0 14px; }
-      .avatar-card{ padding: 12px; border-radius: 20px; }
       .avatar-img{ height: 320px; border-radius: 14px; }
       .skills-strip{ padding: 12px 12px; border-radius: 16px; }
       .skill-item{ font-size: 11px; padding: 6px 9px; }
-      .project-thumb{ height: 140px; }
-      .project-card .p-4{ padding: 18px !important; }
+      .project-thumb{ height: 150px; }
       .btn-accent, .btn-outline-accent{
         width: 100%;
         justify-content: center;
@@ -349,59 +627,23 @@
         flex-direction: column;
         align-items: stretch;
       }
+
+      .skills-wrapper{ grid-template-columns: 1fr; }
+      .skills-card{ min-height: 300px; }
     }
 
+    /* máscara só na foto do HERO */
     .avatar-img {
-  position: relative;
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, black 18%, black 78%, transparent 100%),
+        linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+      -webkit-mask-composite: intersect;
+      mask-composite: intersect;
 
-  -webkit-mask-image:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 18%,
-      black 78%,
-      transparent 100%
-    ),
-    linear-gradient(
-      to right,
-      transparent 0%,
-      black 18%,
-      black 82%,
-      transparent 100%
-    );
-
-  -webkit-mask-composite: intersect;
-  mask-composite: intersect;
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 12%,
-      black 78%,
-      transparent 100%
-    ),
-    linear-gradient(
-      to right,
-      transparent 0%,
-      black 18%,
-      black 82%,
-      transparent 100%
-    );
-}
-
-.avatar-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    60% 50% at 50% 35%,
-    rgba(255,107,74,.18),
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, black 12%, black 78%, transparent 100%),
+        linear-gradient(to right,  transparent 0%, black 18%, black 82%, transparent 100%);
+    }
   </style>
 </head>
 
@@ -422,6 +664,7 @@
           <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contacts</a></li>
         </ul>
       </div>
@@ -455,8 +698,6 @@
 
         <div class="col-lg-6">
           <div class="avatar-wrap">
-            
-
             <div class="">
               <img class="avatar-img" src="img/eu.jpeg" alt="Foto de perfil">
             </div>
@@ -532,83 +773,330 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS (REVAMP) -->
   <section id="projects">
     <div class="container">
       <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
         <div>
           <h2 class="section-title mb-1">Projects</h2>
-          <div class="section-text">Alguns exemplos de projetos alinhados com o que eu desenvolvo no dia a dia.</div>
+          <div class="section-text">
+            Projetos que representam bem meu dia a dia: arquitetura, back-end, dados e UI responsiva.
+          </div>
         </div>
-        <a class="btn btn-outline-accent"href="https://github.com/fabricionandolfo" target="_blank" rel="noreferrer">
+
+        <a class="btn btn-outline-accent" href="https://github.com/fabricionandolfo" target="_blank" rel="noreferrer">
           <i class="bi bi-github me-2"></i>Ver todos no GitHub
         </a>
-        
       </div>
 
       <div class="row g-4">
+
+        <!-- Projeto 1: Intranet -->
         <div class="col-md-6 col-lg-4">
           <div class="project-card">
-            <div class="project-thumb"></div>
-            <div class="p-4">
-              <h5 class="fw-semibold mb-2">Intranet (Multi-tenant)</h5>
-              <p class="text-white-50 small mb-3">
-                Base com autenticação, perfis/roles, módulos por empresa, permissões e organização por camadas.
-                Pensado para escalar com segurança e manutenção simples.
-              </p>
-              <div class="mb-3">
-                <span class="badge-tech">.NET</span>
-                <span class="badge-tech">MVC</span>
-                <span class="badge-tech">SQL</span>
-              </div>
-              <div class="d-flex gap-2">
-                <a class="btn btn-accent btn-sm" href="#" target="_blank" rel="noreferrer">Demo</a>
-                <a class="btn btn-outline-accent btn-sm" href="#" target="_blank" rel="noreferrer">Repo</a>
+            <div class="project-thumb">
+              <div class="thumb-center">
+                <div class="thumb-icon"><i class="bi bi-building-gear"></i></div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card">
-            <div class="project-thumb"></div>
-            <div class="p-4">
-              <h5 class="fw-semibold mb-2">GED / Documentos</h5>
-              <p class="text-white-50 small mb-3">
-                Gestão e listagem de arquivos com filtros, paginação e regras por pasta/perfil.
-                Foco em usabilidade, performance e rastreabilidade (logs/auditoria).
+            <div class="project-body">
+              <div class="project-top">
+                <h5 class="project-title">Intranet (Multi-tenant)</h5>
+                <span class="project-status status-progress">
+                  <span class="dot"></span> Em andamento
+                </span>
+              </div>
+
+              <div class="project-sub">Arquitetura em camadas + autenticação + permissões</div>
+
+              <p class="project-desc">
+                Base com autenticação, perfis/roles, permissões por módulo e separação por empresa (tenant).
+                Estruturado para evoluir com manutenção simples e segurança.
               </p>
+
+              <div class="project-highlights">
+                <span class="project-chip">Auth & Roles</span>
+                <span class="project-chip">Multi-empresa</span>
+                <span class="project-chip">Logs/Auditoria</span>
+                <span class="project-chip">MVC</span>
+              </div>
+
               <div class="mb-3">
                 <span class="badge-tech">C#</span>
-                <span class="badge-tech">API</span>
-                <span class="badge-tech">DataTables</span>
+                <span class="badge-tech">ASP.NET MVC</span>
+                <span class="badge-tech">SQL Server</span>
               </div>
-              <div class="d-flex gap-2">
-                <a class="btn btn-accent btn-sm" href="#" target="_blank" rel="noreferrer">Demo</a>
-                <a class="btn btn-outline-accent btn-sm" href="#" target="_blank" rel="noreferrer">Repo</a>
+
+              <div class="project-actions">
+                <a class="btn btn-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="bi bi-play-circle"></i>Demo
+                </a>
+                <a class="btn btn-outline-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="bi bi-code-slash"></i>Repo
+                </a>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Projeto 2: GED -->
         <div class="col-md-6 col-lg-4">
           <div class="project-card">
-            <div class="project-thumb"></div>
-            <div class="p-4">
-              <h5 class="fw-semibold mb-2">Portfolio</h5>
-              <p class="text-white-50 small mb-3">
+            <div class="project-thumb">
+              <div class="thumb-center">
+                <div class="thumb-icon"><i class="bi bi-folder2-open"></i></div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-top">
+                <h5 class="project-title">GED / Documentos</h5>
+                <span class="project-status status-soon">
+                  <span class="dot"></span> Em breve
+                </span>
+              </div>
+
+              <div class="project-sub">Listagem + filtros + paginação + regras por pasta</div>
+
+              <p class="project-desc">
+                Gestão e listagem de documentos com filtros, paginação e regras por perfil/pasta.
+                Foco em performance, rastreabilidade e experiência do usuário.
+              </p>
+
+              <div class="project-highlights">
+                <span class="project-chip">DataTables</span>
+                <span class="project-chip">Filtros avançados</span>
+                <span class="project-chip">Regras por pasta</span>
+                <span class="project-chip">Performance</span>
+              </div>
+
+              <div class="mb-3">
+                <span class="badge-tech">C#</span>
+                <span class="badge-tech">REST API</span>
+                <span class="badge-tech">SQL</span>
+              </div>
+
+              <div class="project-actions">
+                <a class="btn btn-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="bi bi-play-circle"></i>Demo
+                </a>
+                <a class="btn btn-outline-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="bi bi-code-slash"></i>Repo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 3: Portfolio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-thumb project-thumb--img">
+              <img class="project-img" src="img/porifolio.png" alt="Preview do Portfolio">
+            </div>
+
+            <div class="project-body">
+              <div class="project-top">
+                <h5 class="project-title">Portfolio</h5>
+                <span class="project-status status-live">
+                  <span class="dot"></span> Live
+                </span>
+              </div>
+
+              <div class="project-sub">Landing page pessoal com foco em apresentação e contatos</div>
+
+              <p class="project-desc">
                 Site pessoal para apresentar stack, projetos e contatos.
                 Layout limpo, responsivo e com foco em experiência do usuário.
               </p>
+
+              <div class="project-highlights">
+                <span class="project-chip">Responsivo</span>
+                <span class="project-chip">UI clean</span>
+                <span class="project-chip">Bootstrap</span>
+                <span class="project-chip">GitHub Pages</span>
+              </div>
+
               <div class="mb-3">
                 <span class="badge-tech">HTML</span>
                 <span class="badge-tech">Bootstrap</span>
                 <span class="badge-tech">JS</span>
               </div>
-              <div class="d-flex gap-2">
-                <a class="btn btn-accent btn-sm" href="#" target="_blank" rel="noreferrer">Live</a>
-                <a class="btn btn-outline-accent btn-sm" href="#" target="_blank" rel="noreferrer">Repo</a>
+
+              <div class="project-actions">
+                <a class="btn btn-accent btn-sm" href="https://fabricionandolfo.github.io/Fabricio_Portfolio/" target="_blank" rel="noreferrer">
+                  <i class="bi bi-box-arrow-up-right"></i>Live
+                </a>
+                <a class="btn btn-outline-accent btn-sm" href="https://github.com/fabricionandolfo/Fabricio_Portfolio" target="_blank" rel="noreferrer">
+                  <i class="bi bi-code-slash"></i>Repo
+                </a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 4: API + Swagger -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-thumb">
+              <div class="thumb-center">
+                <div class="thumb-icon"><i class="bi bi-diagram-3"></i></div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-top">
+                <h5 class="project-title">Users API + Swagger</h5>
+                <span class="project-status status-progress">
+                  <span class="dot"></span> Em andamento
+                </span>
+              </div>
+
+              <div class="project-sub">CRUD + Auth + documentação</div>
+
+              <p class="project-desc">
+                API de cadastro de usuários com autenticação, rotas CRUD e documentação via Swagger/OpenAPI.
+                Pensada para estudo e demonstração de boas práticas.
+              </p>
+
+              <div class="project-highlights">
+                <span class="project-chip">Swagger</span>
+                <span class="project-chip">Auth</span>
+                <span class="project-chip">REST</span>
+                <span class="project-chip">Clean code</span>
+              </div>
+
+              <div class="mb-3">
+                <span class="badge-tech">C#</span>
+                <span class="badge-tech">API</span>
+                <span class="badge-tech">Swagger</span>
+              </div>
+
+              <div class="project-actions">
+                <a class="btn btn-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="bi bi-play-circle"></i>Demo
+                </a>
+                <a class="btn btn-outline-accent btn-sm disabled" href="#" tabindex="-1" aria-disabled="true">
+                  <i class="bi bi-code-slash"></i>Repo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
+        <div>
+          <h2 class="section-title mb-1">Skills</h2>
+          <div class="section-text">Tecnologias e práticas que uso no dia a dia (com foco em back-end e arquitetura).</div>
+        </div>
+      </div>
+
+      <div class="skills-wrapper">
+
+        <!-- Skill 1 -->
+        <div class="skills-card">
+          <div class="skills-head">
+            <div class="skills-icon"><i class="bi bi-braces"></i></div>
+            <h3 class="skills-title">C# / .NET</h3>
+          </div>
+          <p class="skills-desc">Construção de regras de negócio, serviços, integrações e código limpo.</p>
+
+          <div class="skills-tags">
+            <span class="skill-pill">LINQ</span>
+            <span class="skill-pill">Entity Framework</span>
+            <span class="skill-pill">Async/Await</span>
+            <span class="skill-pill">SOLID</span>
+          </div>
+
+          <div class="skills-footer">
+            <span class="level-badge level-advanced"><i class="bi bi-rocket-takeoff-fill"></i>Avançado</span>
+            <div class="level-dots" aria-label="Avançado">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="skills-card">
+          <div class="skills-head">
+            <div class="skills-icon"><i class="bi bi-window"></i></div>
+            <h3 class="skills-title">ASP.NET MVC</h3>
+          </div>
+          <p class="skills-desc">Arquitetura em camadas, controllers/views, validações e UI responsiva.</p>
+
+          <div class="skills-tags">
+            <span class="skill-pill">Razor</span>
+            <span class="skill-pill">Bootstrap</span>
+            <span class="skill-pill">Auth/Roles</span>
+            <span class="skill-pill">Boas práticas</span>
+          </div>
+
+          <div class="skills-footer">
+            <span class="level-badge level-advanced"><i class="bi bi-rocket-takeoff-fill"></i>Avançado</span>
+            <div class="level-dots" aria-label="Avançado">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="skills-card">
+          <div class="skills-head">
+            <div class="skills-icon"><i class="bi bi-database"></i></div>
+            <h3 class="skills-title">SQL Server</h3>
+          </div>
+          <p class="skills-desc">Consultas, procedures, performance e modelagem para sistemas reais.</p>
+
+          <div class="skills-tags">
+            <span class="skill-pill">T-SQL</span>
+            <span class="skill-pill">Stored Procedures</span>
+            <span class="skill-pill">Índices</span>
+            <span class="skill-pill">Otimização</span>
+          </div>
+
+          <div class="skills-footer">
+            <span class="level-badge level-intermediate"><i class="bi bi-speedometer2"></i>Intermediário</span>
+            <div class="level-dots" aria-label="Intermediário">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="skills-card">
+          <div class="skills-head">
+            <div class="skills-icon"><i class="bi bi-cloud-check"></i></div>
+            <h3 class="skills-title">DevOps / Azure</h3>
+          </div>
+          <p class="skills-desc">Versionamento, deploy e organização de demandas com foco em entrega.</p>
+
+          <div class="skills-tags">
+            <span class="skill-pill">Azure DevOps</span>
+            <span class="skill-pill">CI/CD</span>
+            <span class="skill-pill">App Service</span>
+            <span class="skill-pill">Git</span>
+          </div>
+
+          <div class="skills-footer">
+            <span class="level-badge level-basic"><i class="bi bi-lightning-charge-fill"></i>Básico</span>
+            <div class="level-dots" aria-label="Básico">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
             </div>
           </div>
         </div>
@@ -635,25 +1123,28 @@
               </div>
               <div>
                 <div class="text-white-50 small">Celular</div>
-                <div class="fw-semibold"><i class="bi bi-telephone me-2 text-warning"></i>(27) 9 9896-8317</a></div>
+                <div class="fw-semibold"><i class="bi bi-telephone me-2 text-warning"></i>(27) 9 9896-8317</div>
               </div>
               <div>
                 <div class="text-white-50 small">LinkedIn</div>
-                <div  class="fw-semibold"><i class="bi bi-linkedin me-2 text-warning"></i><a href="https://www.linkedin.com/in/fabricio-nandolfo/" target="_blank">linkedin.com/fabricio_nandolfo</a></div>
+                <div class="fw-semibold">
+                  <i class="bi bi-linkedin me-2 text-warning"></i>
+                  <a href="https://www.linkedin.com/in/fabricio-nandolfo/" target="_blank" rel="noreferrer">linkedin.com/fabricio_nandolfo</a>
+                </div>
               </div>
               <div>
                 <div class="text-white-50 small">GitHub</div>
-                <div class="fw-semibold"><i class="bi bi-github me-2 text-warning"></i><a href="https://github.com/fabricionandolfo" target="_blank">github.com/fabricionandolfo<a></a></div>
+                <div class="fw-semibold">
+                  <i class="bi bi-github me-2 text-warning"></i>
+                  <a href="https://github.com/fabricionandolfo" target="_blank" rel="noreferrer">github.com/fabricionandolfo</a>
+                </div>
               </div>
-
-              
 
               <hr class="border-opacity-10 my-2">
 
               <div class="d-flex gap-2 flex-wrap">
-              <a class="btn btn-accent" href="https://wa.me/5527998968317" target="_blank"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
-              <a class="btn btn-outline-accent" href="arquivos/Fabricio_CSV.pdf" target="_blank" download><i class="bi bi-download me-2"></i>Currículo</a>
-                
+                <a class="btn btn-accent" href="https://wa.me/5527998968317" target="_blank" rel="noreferrer"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+                <a class="btn btn-outline-accent" href="arquivos/Fabricio_CSV.pdf" target="_blank" download><i class="bi bi-download me-2"></i>Currículo</a>
               </div>
             </div>
           </div>
@@ -682,7 +1173,6 @@
         e.preventDefault();
         el.scrollIntoView({ behavior: "smooth", block: "start" });
 
-        // quando eu clico no link, eu fecho o menu no mobile
         const nav = document.querySelector(".navbar-collapse");
         if(nav && nav.classList.contains("show")){
           new bootstrap.Collapse(nav).toggle();
@@ -690,8 +1180,7 @@
       });
     });
 
-    // eu marco o item do menu conforme eu vou descendo a página
-    const sections = ["#home","#about","#projects","#contact"].map(s => document.querySelector(s));
+    const sections = ["#home","#about","#projects","#skills","#contact"].map(s => document.querySelector(s));
     const links = Array.from(document.querySelectorAll(".nav-link"));
     window.addEventListener("scroll", () => {
       const y = window.scrollY + 140;
